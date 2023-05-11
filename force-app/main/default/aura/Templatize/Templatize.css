@@ -1,0 +1,25 @@
+.THIS .TableBg {
+    background-color: #DEF2F1;border-color: #FEFFFF;
+}
+
+.THIS .TableHeading {
+		width: 145px; background-color: darkgray; text-align: center;font-weight: bold;padding: 6px;
+}
+.THIS .Tableborder {
+		height: 47%;
+}
+.THIS .TableBg {
+    background-color: gainsboro;
+}
+
+.THIS .ButtonAlign {
+    text-align: right;
+}
+.THIS.spinner{
+    position: relative;
+    display: inline-block;
+    margin-left: 167px;
+    width: 55px;
+    vertical-align: middle;
+    white-space: nowrap;
+}

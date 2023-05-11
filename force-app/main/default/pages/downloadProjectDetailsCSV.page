@@ -1,0 +1,5 @@
+<apex:page controller="ecportProjectDetailsCSV" cache="true" contentType="application/octet-stream#{!filename}.csv" showHeader="false" sidebar="false" standardStylesheets="false">Project,Resource Id,Phase,Resource,Role,Actualhours,Task,UploadDate
+    <apex:repeat value="{!resources}" var="item" >       
+       {!item.ChikPeaSSB__Project__r.Name},{!item.Id},{!item.ChikPeaSSB__Phase__r.name},{!item.Name},{!item.Role__c},0
+    </apex:repeat>    
+</apex:page>

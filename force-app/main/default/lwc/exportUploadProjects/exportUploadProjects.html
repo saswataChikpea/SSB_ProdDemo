@@ -1,0 +1,28 @@
+<template>
+    <lightning-card title="Export and Upload Projects">
+        <div class="slds-grid slds-gutters" style="width: 50em">
+            <div class="slds-col">
+                <lightning-button 
+                    title="Export all projects"
+                    label="Download CSV"
+                    onclick={downloadProjects}
+                > </lightning-button>
+            </div>
+            <div class="slds-col">
+                <div>
+                    <lightning-file-upload accept={acceptedCSVFormats} 
+                                           label="Attach CSV" 
+                                           multiple="multiple" 
+                                           onuploadfinished={uploadFileHandler} 
+                                           record-id={recordId}>
+                    </lightning-file-upload>
+                </div>
+                
+            </div>  
+            <!-- <div if:true={error}>
+                {error}
+            </div><br/>           -->
+        </div>
+
+    </lightning-card>
+</template>

@@ -1,0 +1,37 @@
+.myColor.THIS  {
+    background: yellow;
+
+}
+/* .THIS.spinner{
+    
+    display: inline-block;
+    margin-left: 15px;
+    width: 55px;
+    vertical-align: middle;
+    white-space: nowrap;
+} */
+.THIS .lightGreen{
+    background: #95be3c	;
+    border-radius: 25px;padding:2%;
+}
+.THIS .DarkGreen{
+    background:#38a047;
+    border-radius: 25px;padding:2%;
+}
+
+.THIS .lightBlue{
+    background:#4fbcec;
+    border-radius: 25px;padding:2%;
+}
+.THIS .DarkBlue{
+    background:#0093cd;
+    border-radius: 25px;padding:2%;
+}
+.THIS .Orange{
+    background:#f8b927;
+    border-radius: 25px;padding:2%;
+}
+.THIS .DarkOrange{
+    background:#ff7800;
+    border-radius: 25px;padding:2%;
+}

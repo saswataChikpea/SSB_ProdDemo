@@ -1,0 +1,329 @@
+<apex:page standardController="ChikPeaO2B__Invoice__c" extensions="InvoicePDFController" standardStylesheets="true" renderAs="pdf" applyHtmlTag="false" showHeader="false">
+    <html>
+       <head>
+           <style>
+           body{
+                	size: A4;
+                	margin: 0 auto;
+                	margin-top: 20px;
+                	margin-bottom: 60px;
+                	margin-left: 0px;
+                	margin-right: 0px;
+                	font-family: Arial;
+                	
+                }
+                .tableStyle{
+                	border: 1px solid #5b9bd5;
+                    text-align: center;
+                    border-collapse: collapse;
+                    padding: 2px 9px;
+                    font-family: sans-serif;
+                }
+                .tableNumberStyle{
+                	border: 1px solid #5b9bd5;
+                    text-align: right;
+                    border-collapse: collapse;
+                    padding: 2px 9px;
+                    font-family: sans-serif;
+                }
+
+                .tableGrandTotalStyle{
+                	border: 1px solid #5b9bd5;
+                    text-align: center;
+                    border-collapse: collapse;
+                    padding: 3px 9px;
+                    font-family: sans-serif;
+                }
+
+                .tableHeaderStyle{
+                	border: 1px solid #5b9bd5;
+                    text-align: center;
+                    border-collapse: collapse;
+                    padding: 1px 9px;
+                }
+           		.dateInvoice{
+                	margin-left : 500px;
+                    font:10pt;
+                    font-family: sans-serif;
+                }
+                
+                .borderLine{
+                	border : 0.5px solid black;
+                	margin-left: 350px;
+                	margin-right: 330px;
+                }
+                .billTo{
+                	color: blue;
+                	border-bottom: 1px solid #5b9bd5;
+                	font-family: sans-serif;
+                	display:inline;
+                }
+                .contactDetails{
+                	text-align: left;
+                	margin-left: 40px;
+                	
+                }
+                .helloSaswata{
+                	margin-left: 350px;
+                }
+                .grandTotal{
+                	margin-left : 780px;
+                	padding : 10px;
+                	width: 70px;
+                	text-decoration : underline;
+            		<!--display : inline-block;-->
+                	float : left;
+                	
+                }
+                .grandTotal2{
+                	margin-left : 780px;
+                	
+            		<!--display : inline-block;-->
+                	float : left;
+                	
+                }
+                .amountTotal
+                {
+                	padding : 10px;
+                	margin-left : 850px;
+                }
+                .pad{
+                	padding-top : 5px;
+                	padding-bottom : 5px;
+                }
+                .remarks{
+                	margin-left: 350px;
+                	display : inline-block;
+                }
+                .parent{
+                	float:right;
+                	margin-left:550px;
+                }
+                .taxRate{
+                	float : left;
+                	margin-left: 695px;
+                	
+                	
+                }
+                .subTotal{
+                	float : left;
+                	margin-left: 695px;
+                }
+                .rightSide{
+                	float : left;
+                	margin-left: 695px;
+                }
+                .makeBox{
+                	border: 1px solid black;
+                	margin-left : 350px;
+                	height : 65px;
+                	width : 240px;
+                }
+                .borderLine{
+                	border: 0.3px solid black;
+                }    
+           </style>
+           <script>
+            
+           </script>
+       </head>
+        
+       <body>
+       <pre style="font-family: sans-serif;
+                   font:9pt;">Company Name/Logo                                                                                                                                                    Company Address</pre>
+            <div style="text-align: center;">
+                 	
+                <h1><Font style="font-family: sans-serif;"><Font size="10">INVOICE</Font></Font>
+        
+    			</h1>
+            </div>
+            
+            <table class="dateInvoice">
+                <tr>
+                    <td></td>
+                    <td><apex:outputText value="{0,date,MM / dd / yy}">
+                        <apex:param value="{!NOW()}"/>
+                        </apex:outputText></td>
+                </tr>
+                <tr>
+                    <td>Invoice No. -</td>
+                    <td style="padding-right:10px;">{!ChikPeaO2B__Invoice__c.name}</td>
+                </tr>
+            </table><br/>
+            <div style="border : 0.3px solid black;">
+                
+            </div><br/>
+            
+            
+            <table style="text-align: left;
+                          font-family: sans-serif;
+                          font:10pt;">
+                <tr>
+                    <td style="padding-right:170px;"><b>BILL TO</b></td>
+                    <td style="background-color:#fff"></td>
+                </tr>
+                <tr>
+                    <td><b>Contact Name:</b></td>
+                    <td>{!contactName}</td>
+                </tr>
+                <tr>
+                    <td><b>Client Company Name:</b></td>
+                    <td>{!accountName}</td>
+                </tr>
+                <tr>
+                    <td><b>Address:</b></td>
+                    <td>{!contactAddress}</td>
+                </tr>
+                <tr>
+                    <td><b>Phone:</b></td>
+                    <td>{!contactPhone}</td>
+                </tr>
+                <tr>
+                    <td><b>Email:</b></td>
+                    <td><span style="color: #5b9bd5;
+                        border-bottom: 1px solid #5b9bd5;">{!contactEmail}</span></td>
+                </tr>
+            </table><br/><br/>
+
+            <div style="border: 0.3px solid black;">
+                
+            </div>
+            
+            <div>
+                <p style="font-family: sans-serif;
+                          font:10pt;">Hello {!contactName},<!--{!invoice.ChikPeaO2B__Billing_Contact__r.name}--></p>
+            </div>
+            
+            <div>
+                <p style="text-align: left;
+                          font:10pt;
+                          font-family: sans-serif;">Please find attached the Invoice details for the period ending  July,2023. Please pay it 
+					 before the Due Date of 1st August,2023. If you have any questions feel free to contact us
+					 on the contact information provided below.</p>
+            </div> 
+            
+
+            <table align="center" class="tableStyle" style="font:9pt;">
+                <tr style="background-color:#5b9bd5;
+                        ">
+                    <th style="padding-left:50px;
+                            padding-right:50px">Phase</th>
+                    <th class="tableHeaderStyle" style="
+                            padding-left:30px;
+                            padding-right:30px">Resources</th>
+                    <th style="
+                            padding-left:30px;
+                            padding-right:30px">Hrs</th>
+                    <th style="
+                            padding-left:30px;
+                            padding-right:30px">Rate</th>
+                    <th style="
+                            padding-left:30px;
+                            padding-right:30px">Total</th>
+                </tr>
+
+                
+                    <!-- <apex:variable var="myList" value="{!phaseL}" />
+                    <apex:repeat value="{!myList}" var="phase">
+                        <td class="tableStyle">{!phase}</td>
+                    </apex:repeat> -->
+                
+                    <apex:repeat value="{!tableList}"  var="a">
+                        <!-- <apex:variable value="{!0}" var="rowspan"/> -->
+                        <tr>
+                            <!-- <apex:pageBlock rendered="{!a.isRepeated}">
+                                <td class="tableStyle">{!a.phase}</td>
+                            </apex:pageBlock> -->
+                            
+                           
+                                <td rowspan="{!a.counter}" class="tableStyle" style="{!IF(a.isRepeated == true, 'display:none', '')}">
+                                    <div style="{!IF(a.isRepeated == true, 'display:none', '')}" >
+                                        {!a.phase}
+                                    </div>
+                                </td>
+                                <!-- rowspan="{!a.counter}" -->
+
+                                
+                                    <!-- <div style="{!IF(a.isRepeated == true, 'display:none', '')}" >
+                                        <td rowspan="{!a.counter}">
+                                            {!a.phase}
+                                        </td>
+                                    </div> -->
+                                
+                            
+                            <!-- <td style="{!IF(a.isRepeated == false, 'display:hidden', '')}" class="tableStyle">{!a.phase}</td> -->
+                            
+                            <!-- <td class="tableStyle">{!a.phase}</td> -->
+
+
+
+                        <!-- <apex:variable value="{!phaseL}" var="b"/> -->
+                        <!-- <apex:variable value="{!If((a.Phase__c == 'Development'),'1','0')}" var="rowspan"/> -->
+                        
+                            <!-- <td class="tableStyle">{!If((a.Phase__c == 'Development'), 'Development','')}</td> -->
+                            <!-- <td class="tableStyle" rowspan="{!rowspan}">{!a.Phase__c}</td> -->
+                            
+
+                            <!-- <td class="tableStyle">{!rowspan}</td> -->
+                            
+                            
+                             <td class="tableStyle">{!a.resource}</td>
+                             <td class="tableNumberStyle">{!a.hrs}</td>
+                             <td class="tableNumberStyle">${!a.rate}</td>
+
+                             <td rowspan="{!a.counter}" class="tableNumberStyle" style="{!IF(a.isRepeated == true, 'display:none', '')}">
+                                <div style="{!IF(a.isRepeated == true, 'display:none', '')}" >
+                                    ${!a.total}
+                                </div>
+                            </td>
+                             <!-- <td class="tableNumberStyle">${!a.total}</td> -->
+                            <!-- <apex:variable value="{!rowspan+1}" var="rowspan"/> -->
+                        </tr>
+                    
+                    </apex:repeat>
+                
+                    <!-- </apex:repeat> -->
+                
+            
+            
+            
+            
+            <tr style="text-align:center;">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="tableGrandTotalStyle"><span style="color: blue;
+                                             border-bottom: 1px solid #5b9bd5;">Grand Total</span></td>
+                <td class="tableNumberStyle">${!sum}</td>
+                
+            </tr>
+            </table><br/>
+            
+        <table>
+            <tr>
+                <td style="font:10pt;
+                           font-family: sans-serif;">Remarks/ Payment Instruction:</td>
+            </tr>
+            <tr>
+                <td><div style="border: 1px solid black;
+                	
+                	height : 65px;
+                	width : 240px;">
+        		</div>
+                </td>
+            </tr>
+        </table>
+        
+            
+            
+        <br/><div style="border : 0.3px solid black;">
+            
+            </div>
+            
+            <pre style="font-family: sans-serif;
+            font:9pt;">Company Name/Logo                                                                                                                                                    Company Address</pre>
+        
+     
+       </body>
+    </html>
+</apex:page>

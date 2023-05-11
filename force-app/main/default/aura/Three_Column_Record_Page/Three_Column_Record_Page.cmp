@@ -1,0 +1,41 @@
+<aura:component implements="lightning:recordHomeTemplate"  description="Header, Three columns and footer.">
+	
+    <!--Header -->
+    <aura:attribute name="header" type="Aura.Component[]" />
+    
+    <!--Middle columns -->
+    <aura:attribute name="left" type="Aura.Component[]" />
+    <aura:attribute name="center" type="Aura.Component[]" />
+    <aura:attribute name="right" type="Aura.Component[]" />
+    
+	<!--Footer -->
+    <aura:attribute name="footer" type="Aura.Component[]" /> 
+    
+    <div>
+        <lightning:layout>
+            <lightning:layoutItem size="12" >
+                {!v.header}
+            </lightning:layoutItem>
+        </lightning:layout>
+
+        <lightning:layout class="slds-m-vertical_small">
+            <lightning:layoutItem size="{! $Browser.isDesktop ? '4' : '12' }"  padding="horizontal-small">
+                {!v.left}
+            </lightning:layoutItem>
+            <lightning:layoutItem size="{! $Browser.isDesktop ? '4' : '12' }" padding="horizontal-small">
+                {!v.center}
+            </lightning:layoutItem><P></P>
+            <lightning:layoutItem size="{! $Browser.isDesktop ? '4' : '12' }" padding="horizontal-small">
+                {!v.right}
+            </lightning:layoutItem>
+        </lightning:layout>
+
+        <lightning:layout>
+            <lightning:layoutItem size="12" class="slds-m-vertical_small">
+                {!v.footer}
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+    
+    
+</aura:component>
